@@ -29,8 +29,9 @@
             text-align: center;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             color: #0088CC;
+            margin: 10px 0;
         }
         h1 mark {
             background-color: #0088CC;
@@ -39,71 +40,79 @@
         }
         .services {
             display: flex;
-            justify-content: space-between;
-            width: 80%;
+            justify-content: center;
+            width: 90%;
             padding: 1vw 0;
             flex-wrap: wrap;
+            gap: 15px; /* زيادة المسافة بين المربعات */
         }
         .service-box {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            width: 200px;
-            height: 100px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            width: clamp(150px, 40vw, 200px);
+            height: clamp(80px, 20vw, 100px);
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            font-size: clamp(18px, 4vw, 24px);
-            border-radius: 15px;
+            font-size: clamp(16px, 3vw, 24px);
+            border-radius: 10px;
             transition: color 0.3s;
             text-decoration: none;
-            color: #000000; /* أسود في الوضع الليلي */
+            color: #000000;
             position: relative;
             overflow: hidden;
-            margin: 10px;
-            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
+            border: 2px solid #0088CC;
         }
         body.light-mode .service-box {
-            color: #000000; /* أسود أساسي في الوضع النهاري */
-            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+            color: #000000;
+            border: 2px solid #000000;
         }
         .service-container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 5px 0;
+        }
+        .example-text {
+            font-size: clamp(12px, 2vw, 14px);
+            color: #0088CC;
+            margin-top: 5px;
+            text-align: center;
         }
         .details-btn {
             background-color: #0088CC;
             color: #FFFFFF;
-            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
-            padding: 10px 20px;
-            width: 100px;
+            border: 2px solid #0088CC;
+            padding: 8px 15px;
+            width: clamp(80px, 20vw, 100px);
             cursor: pointer;
-            margin-top: 10px;
-            border-radius: 10px;
-            font-size: clamp(14px, 3vw, 16px);
+            margin-top: 5px;
+            border-radius: 8px;
+            font-size: clamp(12px, 2.5vw, 16px);
             transition: background-color 0.3s, color 0.3s;
         }
         body.light-mode .details-btn {
-            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+            border: 2px solid #000000;
         }
         .details-btn:hover {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             color: #FFFFFF;
         }
         .details-btn:active {
             background-color: #0088CC;
-            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: body.light-mode ? #2E7D32 : #25D366;
         }
         .details-list {
             display: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 10px;
-            margin-top: 10px;
-            width: 200px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            margin-top: 5px;
+            width: clamp(150px, 40vw, 200px);
             text-align: center;
             color: #495057;
+            font-size: clamp(12px, 2.5vw, 14px);
         }
         .left-text {
             padding: 1vw;
@@ -112,134 +121,156 @@
         }
         .progress-text {
             display: inline-block;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #000000; /* أسود في الوضع الليلي */
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #000000;
             transition: background-color 0.3s, color 0.3s;
+            font-size: clamp(14px, 3vw, 18px);
         }
         body.light-mode .progress-text {
-            color: #495057; /* رمادي داكن في الوضع النهاري */
+            color: #495057;
         }
         .progress-text:hover {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             color: #FFFFFF;
         }
         .request-text {
-            font-size: clamp(16px, 3vw, 20px);
+            font-size: clamp(14px, 3vw, 20px);
             color: #0088CC;
             transition: color 0.5s ease;
+            margin: 5px 0;
         }
         .request-text:hover {
-            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: body.light-mode ? #2E7D32 : #25D366;
         }
         .contact-container {
             padding: 1vw;
             text-align: center;
-            width: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 15px; /* زيادة المسافة بين المستطيلات */
         }
         .contact-item {
-            margin: 15px 0;
+            margin: 5px 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            width: clamp(300px, 50vw, 500px);
-            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
-            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            width: clamp(250px, 70vw, 500px);
+            border: 2px solid #0088CC;
+            border-radius: 10px;
             transition: color 0.3s;
             position: relative;
             overflow: hidden;
-            color: #000000; /* أسود في الوضع الليلي */
+            color: #000000;
+            font-size: clamp(14px, 2.5vw, 16px);
         }
         body.light-mode .contact-item {
-            color: #000000; /* أسود أساسي في الوضع النهاري */
-            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+            color: #000000;
+            border: 2px solid #000000;
         }
         .contact-item:hover .copy-btn {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             color: #FFFFFF;
         }
         .copy-btn {
             background-color: #0088CC;
             color: #FFFFFF;
             border: none;
-            padding: 10px 20px;
-            width: 100px;
+            padding: 8px 15px;
+            width: clamp(80px, 20vw, 100px);
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 5px;
             border-radius: 5px;
-            font-size: clamp(14px, 3vw, 16px);
+            font-size: clamp(12px, 2.5vw, 16px);
             transition: background-color 0.3s, color 0.3s;
         }
         .copy-btn:hover {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             color: #FFFFFF;
         }
         .copy-btn:active {
             background-color: #0088CC;
-            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: body.light-mode ? #2E7D32 : #25D366;
         }
         .contact-icon {
-            margin-right: 10px;
-            font-size: clamp(16px, 3vw, 20px);
+            margin-right: 5px;
+            font-size: clamp(12px, 2.5vw, 20px);
         }
         .mode-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            top: 10px;
+            right: 10px;
+            width: clamp(30px, 8vw, 35px);
+            height: clamp(30px, 8vw, 35px);
             background-color: #0088CC;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 20px;
+            font-size: clamp(14px, 4vw, 18px);
             color: #FFFFFF;
             transition: background-color 0.3s, transform 0.3s;
         }
         .mode-toggle:hover {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             transform: scale(1.1);
         }
         .lang-toggle {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            height: 40px;
+            top: 10px;
+            left: 10px;
+            width: clamp(40px, 10vw, 50px);
+            height: clamp(30px, 8vw, 35px);
             background-color: #0088CC;
             border-radius: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 16px;
+            font-size: clamp(12px, 3vw, 14px);
             color: #FFFFFF;
             transition: background-color 0.3s, transform 0.3s;
         }
         .lang-toggle:hover {
-            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            background-color: body.light-mode ? #2E7D32 : #25D366;
             transform: scale(1.1);
         }
 
+        /* تحسين التناسق على الموبايل */
         @media (max-width: 768px) {
-            .services {
+            .services, .contact-container {
                 flex-direction: column;
                 align-items: center;
+                width: 95%;
+                gap: 10px;
             }
             .service-box, .contact-item {
-                width: 80%;
-                margin: 10px auto;
+                width: 90%;
+                margin: 0 auto;
+                padding: 8px;
+            }
+            .example-text {
+                font-size: clamp(10px, 2vw, 12px);
+                margin-top: 3px;
             }
             h1 {
-                font-size: 1.8rem;
+                font-size: clamp(1.2rem, 4vw, 1.8rem);
+            }
+            .text, .left-text, .contact-container {
+                padding: 1vw 2vw;
+            }
+            .mode-toggle, .lang-toggle {
+                top: 5px;
+            }
+            .details-btn, .copy-btn {
+                padding: 6px 12px;
+                width: clamp(70px, 18vw, 90px);
             }
         }
     </style>
@@ -255,14 +286,16 @@
     </div>
     <div class="services">
         <div class="service-container">
-            <div class="service-box manual-boots" style="margin-left: 0;" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Manual boots</div>
+            <div class="service-box manual-boots" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Manual boots</div>
+            <div class="example-text example-manual">Click to see an example</div>
             <button class="details-btn" onclick="toggleDetails('manual-details')">Details</button>
             <div id="manual-details" class="details-list">
                 <!-- أضف المعلومات هنا لاحقًا -->
             </div>
         </div>
         <div class="service-container">
-            <a href="https://t.me/@test8p_bot" class="service-box auto-boots" style="margin-right: 0;" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Auto boots</a>
+            <a href="https://t.me/@test8p_bot" class="service-box auto-boots" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Auto boots</a>
+            <div class="example-text example-auto">Click to see an example</div>
             <button class="details-btn" onclick="toggleDetails('auto-details')">Details</button>
             <div id="auto-details" class="details-list">
                 <!-- أضف المعلومات هنا لاحقًا -->
@@ -313,13 +346,13 @@
             const rect = element.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
-            element.style.background = `radial-gradient(circle 50px at ${x}px ${y}px, ${document.body.classList.contains('light-mode') ? '#2E7D32' : '#25D366'}, rgba(255, 255, 255, 0.1))`;
-            element.style.color = document.body.classList.contains('light-mode') ? "#2E7D32" : "#FFFFFF"; /* أخضر غامق في النهاري، أبيض في الليلي */
+            element.style.background = `radial-gradient(circle 50px at ${x}px ${y}px, ${document.body.classList.contains('light-mode') ? '#2E7D32' : '#25D366'}, rgba(255, 255, 255, 0.2))`;
+            element.style.color = document.body.classList.contains('light-mode') ? "#2E7D32" : "#FFFFFF";
         }
 
         function resetGradient(element) {
-            element.style.background = "rgba(255, 255, 255, 0.1)";
-            element.style.color = "#000000"; /* أسود في كلا الوضعين */
+            element.style.background = "rgba(255, 255, 255, 0.2)";
+            element.style.color = "#000000";
         }
 
         function toggleMode() {
@@ -328,11 +361,11 @@
             if (body.classList.contains('light-mode')) {
                 body.classList.remove('light-mode');
                 toggleBtn.innerHTML = '🌙';
-                updateAllTextColors("#000000"); /* نص أسود في الوضع الليلي */
+                updateAllTextColors("#000000");
             } else {
                 body.classList.add('light-mode');
                 toggleBtn.innerHTML = '☀️';
-                updateAllTextColors("#000000"); /* نص أسود أساسي في الوضع النهاري */
+                updateAllTextColors("#000000");
             }
         }
 
@@ -342,7 +375,7 @@
                     element.style.color = color;
                 }
             });
-            document.querySelector('.progress-text').style.color = color; /* لون أسود لـ "تقدم شركتنا" في الليلي */
+            document.querySelector('.progress-text').style.color = color;
         }
 
         function toggleLanguage() {
@@ -355,11 +388,15 @@
                 document.querySelector('.company-progress').innerText = "تقدم شركتنا:";
                 document.querySelector('.manual-boots').innerText = "بوتات يدوية";
                 document.querySelector('.auto-boots').innerText = "بوتات تلقائية";
+                document.querySelector('.example-manual').innerText = "اضغط لمشاهدة مثال";
+                document.querySelector('.example-auto').innerText = "اضغط لمشاهدة مثال";
+                document.querySelectorAll('.details-btn').forEach(btn => btn.innerText = "معلومات");
                 document.querySelector('.request-question').innerText = "كيف يمكنك طلب بوت؟";
                 document.querySelector('.request-instruction').innerText = "لطلب أي بوت:";
                 document.querySelector('.contact-email').innerText = "1. تواصل عبر الإيميل: ";
                 document.querySelector('.contact-telegram').innerText = "2. تواصل عبر التيليجرام: ";
                 document.querySelector('.contact-whatsapp').innerText = "3. تواصل عبر الواتساب: ";
+                document.querySelectorAll('.copy-btn').forEach(btn => btn.innerText = "نسخ");
                 document.body.style.direction = "rtl";
             } else {
                 html.lang = "en";
@@ -368,11 +405,15 @@
                 document.querySelector('.company-progress').innerText = "Our company is progress:";
                 document.querySelector('.manual-boots').innerText = "Manual boots";
                 document.querySelector('.auto-boots').innerText = "Auto boots";
+                document.querySelector('.example-manual').innerText = "Click to see an example";
+                document.querySelector('.example-auto').innerText = "Click to see an example";
+                document.querySelectorAll('.details-btn').forEach(btn => btn.innerText = "Details");
                 document.querySelector('.request-question').innerText = "How you can request a boot?";
                 document.querySelector('.request-instruction').innerText = "To request any boot:";
                 document.querySelector('.contact-email').innerText = "1. Contact with email: ";
                 document.querySelector('.contact-telegram').innerText = "2. Contact with Telegram: ";
                 document.querySelector('.contact-whatsapp').innerText = "3. Contact with WhatsApp: ";
+                document.querySelectorAll('.copy-btn').forEach(btn => btn.innerText = "Copy");
                 document.body.style.direction = "ltr";
             }
             updateAllTextColors(document.body.classList.contains('light-mode') ? "#000000" : "#000000");
