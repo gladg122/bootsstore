@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Professional Telegram Bot Development Company"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Boots Store</title>
+    <style>
+        body {
+            color: #495057;
+            background-color: #212529; /* رمادي غامق للوضع الليلي */
+            margin: 0;
+            background-image: url('/home/ghost/Pictures/photo_2025-04-05_00-23-33.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.light-mode {
+            background-color: #E9ECEF; /* أبيض مائل للإغلاق في الوضع النهاري */
+            color: #495057;
+        }
+        .text {
+            padding: 2vw;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #0088CC;
+        }
+        h1 mark {
+            background-color: #0088CC;
+            color: #FFFFFF;
+            padding: 5px;
+        }
+        .services {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            padding: 1vw 0;
+            flex-wrap: wrap;
+        }
+        .service-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: clamp(18px, 4vw, 24px);
+            border-radius: 15px;
+            transition: color 0.3s;
+            text-decoration: none;
+            color: #000000; /* أسود في الوضع الليلي */
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
+        }
+        body.light-mode .service-box {
+            color: #000000; /* أسود أساسي في الوضع النهاري */
+            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+        }
+        .service-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .details-btn {
+            background-color: #0088CC;
+            color: #FFFFFF;
+            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
+            padding: 10px 20px;
+            width: 100px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px;
+            font-size: clamp(14px, 3vw, 16px);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light-mode .details-btn {
+            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+        }
+        .details-btn:hover {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: #FFFFFF;
+        }
+        .details-btn:active {
+            background-color: #0088CC;
+            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+        }
+        .details-list {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            width: 200px;
+            text-align: center;
+            color: #495057;
+        }
+        .left-text {
+            padding: 1vw;
+            text-align: center;
+            width: 100%;
+        }
+        .progress-text {
+            display: inline-block;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #000000; /* أسود في الوضع الليلي */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.light-mode .progress-text {
+            color: #495057; /* رمادي داكن في الوضع النهاري */
+        }
+        .progress-text:hover {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: #FFFFFF;
+        }
+        .request-text {
+            font-size: clamp(16px, 3vw, 20px);
+            color: #0088CC;
+            transition: color 0.5s ease;
+        }
+        .request-text:hover {
+            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+        }
+        .contact-container {
+            padding: 1vw;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-item {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            width: clamp(300px, 50vw, 500px);
+            border: 2px solid #0088CC; /* أزرق التيليجرام في الوضع الليلي */
+            border-radius: 15px;
+            transition: color 0.3s;
+            position: relative;
+            overflow: hidden;
+            color: #000000; /* أسود في الوضع الليلي */
+        }
+        body.light-mode .contact-item {
+            color: #000000; /* أسود أساسي في الوضع النهاري */
+            border: 2px solid #000000; /* حدود سوداء في الوضع النهاري */
+        }
+        .contact-item:hover .copy-btn {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: #FFFFFF;
+        }
+        .copy-btn {
+            background-color: #0088CC;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            width: 100px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: clamp(14px, 3vw, 16px);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            color: #FFFFFF;
+        }
+        .copy-btn:active {
+            background-color: #0088CC;
+            color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+        }
+        .contact-icon {
+            margin-right: 10px;
+            font-size: clamp(16px, 3vw, 20px);
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #0088CC;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 20px;
+            color: #FFFFFF;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .mode-toggle:hover {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            transform: scale(1.1);
+        }
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 40px;
+            background-color: #0088CC;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            color: #FFFFFF;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .lang-toggle:hover {
+            background-color: body.light-mode ? #2E7D32 : #25D366; /* أخضر غامق في النهاري، نيون في الليلي */
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-box, .contact-item {
+                width: 80%;
+                margin: 10px auto;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mode-toggle" onclick="toggleMode()">🌙</div>
+    <div class="lang-toggle" onclick="toggleLanguage()">EN</div>
+    <div class="text">
+        <h1 class="main-title"><strong><mark><u>BOOTS DEVELOPMENT COMPANY</u></mark></strong></h1>
+    </div>
+    <div class="left-text">
+        <strong class="progress-text company-progress">Our company is progress:</strong>
+    </div>
+    <div class="services">
+        <div class="service-container">
+            <div class="service-box manual-boots" style="margin-left: 0;" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Manual boots</div>
+            <button class="details-btn" onclick="toggleDetails('manual-details')">Details</button>
+            <div id="manual-details" class="details-list">
+                <!-- أضف المعلومات هنا لاحقًا -->
+            </div>
+        </div>
+        <div class="service-container">
+            <a href="https://t.me/@test8p_bot" class="service-box auto-boots" style="margin-right: 0;" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">Auto boots</a>
+            <button class="details-btn" onclick="toggleDetails('auto-details')">Details</button>
+            <div id="auto-details" class="details-list">
+                <!-- أضف المعلومات هنا لاحقًا -->
+            </div>
+        </div>
+    </div>
+    <div class="left-text">
+        <em><strong class="request-text request-question">How you can request a boot?</strong></em><br>
+        <em><strong class="request-text request-instruction">To request any boot:</strong></em>
+    </div>
+    <div class="contact-container">
+        <div class="contact-item" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">
+            <strong><span class="contact-icon">✉️</span><span class="contact-email">1. Contact with email: </span><u id="email">za7448940@gmail.com</u></strong>
+            <button class="copy-btn" onclick="copyText('email')">Copy</button>
+        </div>
+        <div class="contact-item" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">
+            <strong><span class="contact-icon">📩</span><span class="contact-telegram">2. Contact with Telegram: </span><u id="telegram">@U4WUW</u></strong>
+            <button class="copy-btn" onclick="copyText('telegram')">Copy</button>
+        </div>
+        <div class="contact-item" onmousemove="updateGradient(event, this)" onmouseleave="resetGradient(this)">
+            <strong><span class="contact-icon">📱</span><span class="contact-whatsapp">3. Contact with WhatsApp: </span><u id="whatsapp">+963991740208</u></strong>
+            <button class="copy-btn" onclick="copyText('whatsapp')">Copy</button>
+        </div>
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert('Copied: ' + text);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            if (details.style.display === "block") {
+                details.style.display = "none";
+            } else {
+                details.style.display = "block";
+            }
+        }
+
+        function updateGradient(event, element) {
+            const rect = element.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            element.style.background = `radial-gradient(circle 50px at ${x}px ${y}px, ${document.body.classList.contains('light-mode') ? '#2E7D32' : '#25D366'}, rgba(255, 255, 255, 0.1))`;
+            element.style.color = document.body.classList.contains('light-mode') ? "#2E7D32" : "#FFFFFF"; /* أخضر غامق في النهاري، أبيض في الليلي */
+        }
+
+        function resetGradient(element) {
+            element.style.background = "rgba(255, 255, 255, 0.1)";
+            element.style.color = "#000000"; /* أسود في كلا الوضعين */
+        }
+
+        function toggleMode() {
+            const body = document.body;
+            const toggleBtn = document.querySelector('.mode-toggle');
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                toggleBtn.innerHTML = '🌙';
+                updateAllTextColors("#000000"); /* نص أسود في الوضع الليلي */
+            } else {
+                body.classList.add('light-mode');
+                toggleBtn.innerHTML = '☀️';
+                updateAllTextColors("#000000"); /* نص أسود أساسي في الوضع النهاري */
+            }
+        }
+
+        function updateAllTextColors(color) {
+            document.querySelectorAll('.service-box, .contact-item').forEach(element => {
+                if (!element.style.background.includes('radial-gradient')) {
+                    element.style.color = color;
+                }
+            });
+            document.querySelector('.progress-text').style.color = color; /* لون أسود لـ "تقدم شركتنا" في الليلي */
+        }
+
+        function toggleLanguage() {
+            const langToggle = document.querySelector('.lang-toggle');
+            const html = document.documentElement;
+            if (html.lang === "en") {
+                html.lang = "ar";
+                langToggle.innerHTML = "AR";
+                document.querySelector('.main-title').innerHTML = "<strong><mark><u>شركة تطوير البوتات</u></mark></strong>";
+                document.querySelector('.company-progress').innerText = "تقدم شركتنا:";
+                document.querySelector('.manual-boots').innerText = "بوتات يدوية";
+                document.querySelector('.auto-boots').innerText = "بوتات تلقائية";
+                document.querySelector('.request-question').innerText = "كيف يمكنك طلب بوت؟";
+                document.querySelector('.request-instruction').innerText = "لطلب أي بوت:";
+                document.querySelector('.contact-email').innerText = "1. تواصل عبر الإيميل: ";
+                document.querySelector('.contact-telegram').innerText = "2. تواصل عبر التيليجرام: ";
+                document.querySelector('.contact-whatsapp').innerText = "3. تواصل عبر الواتساب: ";
+                document.body.style.direction = "rtl";
+            } else {
+                html.lang = "en";
+                langToggle.innerHTML = "EN";
+                document.querySelector('.main-title').innerHTML = "<strong><mark><u>BOOTS DEVELOPMENT COMPANY</u></mark></strong>";
+                document.querySelector('.company-progress').innerText = "Our company is progress:";
+                document.querySelector('.manual-boots').innerText = "Manual boots";
+                document.querySelector('.auto-boots').innerText = "Auto boots";
+                document.querySelector('.request-question').innerText = "How you can request a boot?";
+                document.querySelector('.request-instruction').innerText = "To request any boot:";
+                document.querySelector('.contact-email').innerText = "1. Contact with email: ";
+                document.querySelector('.contact-telegram').innerText = "2. Contact with Telegram: ";
+                document.querySelector('.contact-whatsapp').innerText = "3. Contact with WhatsApp: ";
+                document.body.style.direction = "ltr";
+            }
+            updateAllTextColors(document.body.classList.contains('light-mode') ? "#000000" : "#000000");
+        }
+    </script>
+</body>
+</html>
